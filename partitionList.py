@@ -24,29 +24,38 @@ class Solution:
             largeHead = large
             smallHead = small
             while head != None:
-                print "times"
                 if head.val < x:
-                    print (head.val,x)
                     small.next = head
                     small = small.next
                 else:
                     large.next = head
-                    large = large.next
+                    large = large.next    
                 head = head.next
-            print small.next.val
-            print small.next.next.val
-            print large.next.val
-            print large.next.next.val
+            large.next = None
             small.next = largeHead.next
             return smallHead.next
 
-node1 = ListNode(4)
-node2 = ListNode(3)
-#node3 = ListNode(2)
-#node4 = ListNode(1)
+node1 = ListNode(1)
+node2 = ListNode(1)
+node3 = ListNode(2)
+node4 = ListNode(1)
 node1.next = node2
-#node2.next = node3
-#node3.next = node4
-ret = Solution().partition(node1, 2)
-print "w" , ret.val
-print "w" , ret.next.val
+node2.next = node3
+node3.next = node4
+
+res = Solution().partition(node1, 0)
+print  res.val
+print  res.next.val
+print  res.next.next.val
+print  res.next.next.next.val
+print  res.next.next.next.next
+
+res2 = Solution().partition(node3, 2)
+print  res2.val
+print  res2.next.val
+print  res2.next.next
+
+res3 = Solution().partition(node3, 3)
+print  res3.val
+print  res3.next.val
+print  res3.next
