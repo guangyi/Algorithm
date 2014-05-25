@@ -13,12 +13,12 @@ class Solution:
         result = []
         heap = []
         for i in range(0, k):
-            heap.append((arr[i][0],(i, 0)))
+            if arr[i] != []:
+                heap.append((arr[i][0],(i, 0)))
         # transform list heap into a heap
         heapq.heapify(heap)
         
         while len(heap) != 0:
-            print len(heap)
             min = heapq.heappop(heap)
             # data structure: (value, (arrIndex, elemIndex))
             arrTup = min[1]
@@ -34,4 +34,8 @@ arr = [
        [0,2,3,4,],
        [5,6]
        ] 
+arr2 = [[1,2,3]]
+arr3 = [[],[2,3]]
 print Solution().mergeKsortedArray(arr)
+print Solution().mergeKsortedArray(arr2)
+print Solution().mergeKsortedArray(arr3)
