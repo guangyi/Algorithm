@@ -20,6 +20,7 @@ class Solution():
             return [[]]
         else:
             subset = self.recurSet(Set, index-1, allsubSet) 
+            # return allsubSet to subset, so these two points to the same array
             result = result + subset
             for item in result:
                 newSub = item + [Set[index-1]]
