@@ -1,3 +1,9 @@
+'''
+pre-order traversal. 
+recursion way and iterative way
+iterative: stack --> push root to stack --> tempNode = root --> add tempNode val to result --> push right node of tempNode 
+--> push left node  of tempNode --> pop from stack as tempNode
+'''
 class TreeNode:
     def __init__(self, x):
         self.val = x

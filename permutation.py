@@ -1,6 +1,11 @@
 class Solution:
     # @param num, a list of integer
     # @return a list of lists of integers
+    '''
+    	recurtion way
+    	previous store each mid result of recursion
+    	is until last recusion, it has every permuation that last element needs.
+    '''
     def permute(self, num):
         if not num: return
         if len(num) == 1: return [num]
