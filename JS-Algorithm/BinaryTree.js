@@ -24,13 +24,14 @@ $(document).ready(function(){
 		result.push([root.val]);
 		while(thisLevel.length != 0){
 			var nextLevel = [];
+			temp = []
 			for (var i = 0; i < thisLevel.length; i++){
 				if (thisLevel[i].left ) nextLevel.push(thisLevel[i].left);
 				if (thisLevel[i].right) nextLevel.push(thisLevel[i].right);
+				temp.append(node.val);
 			};
-			if(nextLevel.length != 0){
-				result.push(storeVal(nextLevel));
-			}
+			result.push(temp);
+			// or result.unshift(temp);// this is for bottom up requirment
 			thisLevel = nextLevel;
 		}
 		return result;
