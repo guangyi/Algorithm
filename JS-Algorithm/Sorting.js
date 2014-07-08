@@ -15,8 +15,6 @@ $(document).ready(function(){
 		}
 		else{
 			var mid = Math.floor((end + start)/2);
-			console.log("start=" + start + "mid="+mid + "end="+end);
-			console.log(arr[start] + ' ' + arr[mid] + ' ' + arr[end]);
 			mergeSortMain(arr,aux,start, mid);
 			mergeSortMain(arr,aux, mid+1, end);
 			merge(arr,aux, start, mid, end);

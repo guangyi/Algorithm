@@ -14,18 +14,23 @@ $(document).ready(function(){
 	var root = new TreeNode(3, nod1 , nod2);
 	
 	var res = BinaryTree(root);
-	for (var i = 0; i < res.length ; i++){
+	for (var i = 0; i < res.length ; i++) {
 		console.log(res[i]);
 	};
-	function BinaryTree(root){
-		if (!root){return [];};
+	function BinaryTree(root) {
+		if(!root) {return [];};
 		var result = [];
 		var thisLevel = [root];
 		result.push([root.val]);
-		while(thisLevel.length != 0){
+
+		/*
+			sdfsadfsdfs
+			sdfasdfsadfssdf
+		*/
+		while(thisLevel.length != 0) {
 			var nextLevel = [];
 			temp = []
-			for (var i = 0; i < thisLevel.length; i++){
+			for (var i = 0; i < thisLevel.length; i++) {
 				if (thisLevel[i].left ) nextLevel.push(thisLevel[i].left);
 				if (thisLevel[i].right) nextLevel.push(thisLevel[i].right);
 				temp.append(node.val);
@@ -98,3 +103,6 @@ for(var i =0; i < arr.length; i++){
 	console.log("length" + arr.length);
 	console.log(arr.pop());
 }
+a = [1,2,3];
+b = [4]
+console.log(a.concat(b));
