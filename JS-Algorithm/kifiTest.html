@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <script type="text/javascript">
+  function minTwo(array) {
+    if (array.length <= 1) return array;
+    //if (array.length == 2) return array.sort();
+    var arr = [array[0], array[1]].sort();
+    var min1 = arr[0];
+    var min2 = arr[1];
+    for (var  i = 2; i < array.length; i++) {
+        if (array[i] <= min1) {
+            min2 = min1;
+            min1 = array[i];
+        }
+        else if(array[i] < min2 && array[i] > min1) {
+            min2 = array[i];
+        }
+    }
+    return [min1, min2];
+}
+var union = function(array1, array2) {
+  var newArray = array1.concat(array2);
+  var obj = {};
+  newArray.forEach(function(num) {
+     obj[num] = true;
+   });
+  return Object.keys(obj);
+}
+
+var intersect = function(array1, array2) {
+  var obj = {};
+  var result = [];
+  array1.forEach(function(num) {
+     obj[num] = true;
+  });
+   
+  array2.forEach(function(num) {
+      if(obj[num]) result.push(num);
+  });
+  return result;
+}
+  </script>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listing 5.7</title>
+    <script type="text/javascript" src="../scripts/assert.js"></script>
+    <link href="../styles/assert.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <button id="test">Click Me!</button>                             <!--#1-->
+
+    <script>
+      /*var button = {                                                 //#2
+        clicked: false,
+        clicks: function(){                                           //#3
+          this.clicked = true;
+          assert(button.clicked,"The button has been clicked");      //#4
+          console.log(this);
+        }
+      };
+      function bind(button, name) {
+        return function() {
+          button.clicks.apply(button);
+          //console.log(arguments);
+        }
+      }
+      function test1() {
+        return function() {
+          // the different between this two is the result
+          // also because apply it just pass string 'test' 
+          // the second one pass the "string" as a array!
+          test2.apply(this, arguments); //'test'
+          test2(arguments); //['test']
+        }
+      }
+      function test2(string) {
+        console.log(string)
+      }
+
+      var b = test1();
+      b('test');
+
+      var elem = document.getElementById("test");                    //#5
+      elem.addEventListener("click", bind, false);             //#5
+      // if there is input, then the function will be invoke immedietely
+      // in this case,*/
+
+      function minTwo(array) {
+    if (array.length <= 1) return array;
+    //if (array.length == 2) return array.sort();
+    var arr = [array[0], array[1]].sort();
+    var min1 = arr[0];
+    var min2 = arr[1];
+    for (var  i = 2; i < array.length; i++) {
+        if (array[i] <= min1) {
+            min2 = min1;
+            min1 = array[i];
+        }
+        else if(array[i] < min2 && array[i] > min1) {
+            min2 = array[i];
+        }
+    }
+    return [min1, min2];
+  
+}
+      console.log(minTwo([-3,-4,-3]));
+      console.log(minTwo([0,0,-3,-4,1]));
+      console.log(minTwo([1,2,-6, -6]));
+      console.log(minTwo([-3,-4]));
+    </script>
+    </script>
+
+  </body>
+</html>
+

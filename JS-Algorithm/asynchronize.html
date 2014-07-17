@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+	<!-- 
+		How to call a done() only when every asynchronous function has done
+		funcList is a function array. Design callBack function to implement this function
+	-->
+	<html>
+		<script type="text/javascript">
+			function callBackIfDone(funcList, done) {
+				var counter = 0;
+				function callBack(name) {
+					counter++;
+					console.log(name, counter);
+					if (counter == funcList.length) done();
+				}
+				funcList.forEach(function(func) {
+					func(callBack);
+				})
+			}
+
+			(function() {
+				function test1(callBack) {
+					console.log(this);
+					setTimeout(callBack, 1000, test1.name);
+				}
+				function test2(callBack) {
+					setTimeout(callBack, 2000, test2.name);
+				}
+				function test3(callBack) {
+					setTimeout(callBack, 1500, test3.name);
+				}
+				var funcList = [test1 , test2, test3];
+				callBackIfDone(funcList, function() {
+					console.log('done');
+				})
+			})();
+		</script>
+	</html>
+
