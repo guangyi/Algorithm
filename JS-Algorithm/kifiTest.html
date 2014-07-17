@@ -39,8 +39,24 @@ var intersect = function(array1, array2) {
   });
   return result;
 }
+console.log(minTwo([-3,-4,-3]));
+console.log(minTwo([0,0,-3,-4,1]));
+console.log(minTwo([1,2,-6, -6]));
+console.log(minTwo([-3,-4]));
   </script>
 <body>
-
+  <a href="#">link 1</a> <a href="#">link 2</a> <a href="#">link 3</a>
+  <script type="text/javascript">
+    var aElems = document.getElementsByTagName('a');
+    function alertNum(num) {
+      console.log('here');
+      return function() {
+        alert(num);
+      }
+    }
+    for ( var i = aElems.length; i--; ) {
+      aElems[i].onclick = alertNum(i);
+    }
+  </script>
 </body>
 </html>
