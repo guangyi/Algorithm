@@ -1,7 +1,40 @@
 <!DOCTYPE html>
 <html>
   <script type="text/javascript">
-  function minTwo(array) {
+  // Write a function that will log its arguments to the console with a timestamp.
+
+log(1, 2, 3); // same as console.log(Date.now(), 1, 2, 3);
+
+function log() {
+    var newArray = Array.prototype.slice.call(arguments);//[1,2,3]
+    newArray.unshift(Date.now());
+    console.log.apply(console, newArray);//this,arugments must be apply!!
+    console.log(newArray);
+}
+// Write a function that replaces all vowels in a string with '_'. ("go" -> "g_")
+/*function repacesVowels(string) {
+    var dict = {
+        'a':true,
+        'e':true,
+        'i':true,
+        'o':true,
+        'u':true
+    }
+    var newStr = string.toLowerCase();
+    for( var i = 0; i<newStr.length; i++) {
+        if (newStr[i] in dict) 
+    }
+    
+    /[aeiouAEIOU],'_'
+    string.replace('a','_')
+}*/
+//string.replace(/[aeiouAEIOU]/gi, '_')
+
+
+
+
+
+  /*function minTwo(array) {
     if (array.length <= 1) return array;
     //if (array.length == 2) return array.sort();
     var arr = [array[0], array[1]].sort();
@@ -42,9 +75,10 @@ var intersect = function(array1, array2) {
 console.log(minTwo([-3,-4,-3]));
 console.log(minTwo([0,0,-3,-4,1]));
 console.log(minTwo([1,2,-6, -6]));
-console.log(minTwo([-3,-4]));
+console.log(minTwo([-3,-4]));*/
   </script>
 <body>
+  <!--
   <a href="#">link 1</a> <a href="#">link 2</a> <a href="#">link 3</a>
   <script type="text/javascript">
     var aElems = document.getElementsByTagName('a');
@@ -57,6 +91,6 @@ console.log(minTwo([-3,-4]));
     for ( var i = aElems.length; i--; ) {
       aElems[i].onclick = alertNum(i);
     }
-  </script>
+  </script>-->
 </body>
 </html>
