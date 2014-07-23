@@ -13,7 +13,7 @@
       var ninjas = {                                                    //#1
        values: ["Dean Edwards", "Sam Stephenson", "Alex Russell"]
       };
-
+/*
       addMethod(ninjas, "find", function(){                             //#2
         return this.values;
       });
@@ -42,7 +42,17 @@
              "Found ninja by first and last name");
       assert(ninjas.find("Alex", "Russell", "Jr") == null,
              "Found nothing");
-
+*/
+      var test = {};
+      addMethod(test, 'alerts',function(){alert('1Hi!')});
+      addMethod(test,'alerts',function(a){alert(a)});
+      addMethod(test,'alerts',function(a,b ){alert(a + b)});
+      console.log(test.alerts);
+      //test.alerts();
+      test.alerts('2BBB');
+      test.alerts('3ccc','4ddd');
+      test.alerts();
+      test.alerts('5d','6e');
     </script>
   </body>
 </html>
