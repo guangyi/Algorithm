@@ -53,6 +53,20 @@
       test.alerts('3ccc','4ddd');
       test.alerts();
       test.alerts('5d','6e');
+      
+function sendQuery(query) {
+  $.get(query,function(data) {
+    //do somehting 
+  });
+}
+
+var id;
+$('input').keyup(function() {
+  clearTimeout(id);
+  // get input value
+  var query = '/search?query=' + this.val(); 
+  id = setTimeout(sendQuery, query, 600);
+});
     </script>
   </body>
 </html>

@@ -9,8 +9,8 @@ function log() {
     var newArray = Array.prototype.slice.call(arguments);//[1,2,3]
     newArray.unshift(Date.now());
     console.log.apply(console, newArray);//this,arugments must be apply!!
-    console.log(newArray);
 }
+
 // Write a function that replaces all vowels in a string with '_'. ("go" -> "g_")
 /*function repacesVowels(string) {
     var dict = {
