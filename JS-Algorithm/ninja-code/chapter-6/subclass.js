@@ -21,6 +21,7 @@
                     superPattern.test(properties[name]) ?
           (function(name, fn) {                                        //#5
             return function() {
+              console.log(this);
               var tmp = this._super;
 
               // Add a new ._super() method that is the same method
