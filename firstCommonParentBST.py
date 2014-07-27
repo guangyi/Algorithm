@@ -40,5 +40,4 @@ node4.left = node3
 node4.right = node5
 node5.left = node6
 
-
 print Solution().commonParentBST(root, node3, node4)
