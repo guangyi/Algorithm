@@ -1,22 +1,29 @@
 class Solution:
     # @param grid, a list of lists of integers
     # @return an integer
-    def minPathSumRe(self, grid):
-        y = len(grid) - 1
-        x = len(grid[0]) - 1
-        indexX = x
-        indexY = y
-        return self.minSum(indexX, indexY, grid)
+    '''
+Created on Jul 24, 2014
+
+@author: zhouguangyi2009
+'''
+import sys
+class Solution:
+    # @param grid, a list of lists of integers
+    # @return an integer
     
-    def minSum(self, indexX, indexY, grid):
-        if indexX == 0 and indexY == 0:
-            return grid[0][0]
-        if indexY == 0:
-            return self.minSum(indexX - 1, indexY, grid) + grid[indexY][indexX]
-        if indexX == 0:
-            return self.minSum(indexX, indexY - 1, grid) + grid[indexY][indexX]
-        return min(self.minSum(indexX- 1, indexY, grid), self.minSum(indexX, indexY - 1, grid)) + grid[indexY][indexX]
+    # Primary way!!!
+    def minPathSumFast(self, grid):
+        row = len(grid)
+        col = len(grid[0])
+        result = [sys.maxint for i in range(0, col)]
+        result[0] = grid[0][0]
+        for i in range(0, row):
+            if i != 0: result[0] = result[0] + grid[i][0]
+            for j in range(1, col):
+                result[j] = min(result[j - 1], result[j]) + grid[i][j]
+        return result[col - 1]
     
+    # two dimension array-- more clear
     def minPathSum(self, grid):
         y = len(grid)
         x = len(grid[0])
@@ -30,6 +37,15 @@ class Solution:
             for j in range(1, x):
                 result[i][j] = min(result[i - 1][j], result[i][j - 1]) + grid[i][j]
         return result[y - 1][x - 1]
+    
+    def minSum(self, indexX, indexY, grid):
+        if indexX == 0 and indexY == 0:
+            return grid[0][0]
+        if indexY == 0:
+            return self.minSum(indexX - 1, indexY, grid) + grid[indexY][indexX]
+        if indexX == 0:
+            return self.minSum(indexX, indexY - 1, grid) + grid[indexY][indexX]
+        return min(self.minSum(indexX- 1, indexY, grid), self.minSum(indexX, indexY - 1, grid)) + grid[indexY][indexX]
             
 print Solution().minPathSumRe([[1,2,3],[1,2,3]]) #7
 print Solution().minPathSumRe([[1,2,3],[3,4,1],[1,1,1]])#7
