@@ -1,4 +1,7 @@
-function flattenObj(obj, parentKey, newObj) {
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+	function flattenObj(obj, parentKey, newObj) {
 	for (key in obj) {
 		if (typeof obj[key] == 'object') {
 			parentKey = parentKey == '' ? key : parentKey + '_' + key;
@@ -39,3 +42,6 @@ flatten({
 		}
 	}
 });
+</script>
+
+</html>

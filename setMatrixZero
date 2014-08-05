@@ -1,0 +1,21 @@
+class Solution:
+    # @param matrix, a list of lists of integers
+    # RETURN NOTHING, MODIFY matrix IN PLACE.
+    def setZeroes(self, matrix):
+        numOfRow = len(matrix)
+        numOfCol = len(matrix[0])
+        zeroCol = []
+        for row in range(0, numOfRow):
+            mark = False
+            for col in range(0, numOfCol):
+                if matrix[row][col] == 0: 
+                    mark = True
+                    if col not in zeroCol: zeroCol.append(col)
+            if mark == True:
+                matrix[row] = [0 for i in range(0, numOfCol)]
+        for row in range(0, numOfRow):
+            for col in range(0, numOfCol):
+                if col in zeroCol:
+                    matrix[row][col] = 0
+        print matrix
+Solution().setZeroes([[1,2,3],[2,3,0],[0,3,4]])
