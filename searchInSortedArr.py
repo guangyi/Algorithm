@@ -12,29 +12,17 @@ class Solution:
         return self.searchHalf(A, 0, len(A)-1, target)
         
     def searchHalf(self, A, start, end, target):
-        if start > end:
-            return -1
-        mid = int ((start + end)/ 2)
-        midVal = A[mid] 
-        startVal = A[start] 
-        endVal = A[end]
-        if midVal == target:
-            return mid
-        # left half is ordered
-        if midVal >= startVal:
-            if target <= midVal and target >= startVal:
-                # target is in left half
-                return self.searchHalf(A, start, mid-1, target)
-            else:
-                return self.searchHalf(A, mid+1, end, target)
-                # target is in right half
-        # right half is ordered
-        elif midVal < startVal:
-            # target in right half:
-            if target >= midVal and target <= endVal:
-                return self.searchHalf(A, mid+1, end, target)
-            # target in left half:
-            else:
-                return self.searchHalf(A, start, mid-1, target)
+        if start > end: return -1 # if there is only one node  or empty A, return -1 immediately
+        mid = start + (end - start) / 2
+        if A[mid] == target: return mid
+        if A[mid] <= A[end]: # right half is ordered
+            if A[mid] < target and target <= A[end]: # target is in right half
+                return self.searchHalf(A, mid + 1, end, target)
+            else: return self.searchHalf(A, start, mid - 1, target) # target is in left half
+        
+        elif A[mid] >= A[start]: # left half is ordered
+            if A[start] <= target and target < A[mid]:# target in left half:
+                return self.searchHalf(A, start, mid - 1, target)
+            else: return self.searchHalf(A, mid + 1, end, target) # target in right half:
         return -1
 print Solution().search([1,3], 3)
