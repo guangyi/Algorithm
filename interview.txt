@@ -1,0 +1,39 @@
+<div style=”blah”> 1000
+#foo 100
+.foo .bar 20
+li .foo 11
+.bar 1
+.foo:first-child 10
+input[type=text] 1
+li h2 2
+div 1
+
+<li class =”foo bar”>
+<div class=”footwo green”>
+<a class=”foo”>
+function getElementsByClassName(classname) {
+	var arr = document.querySelectorAll(‘ body *’);
+	var result = [];
+	for (node in arr) {
+		names = node.className();
+		var n = names.split(' ');
+		flag = false;
+		for (index in n) {
+			if (n[index] == 'foo') {
+				flag = True;
+				return
+			}
+		}
+		if (flag) result.push(node);
+  return check(result)；
+}
+
+Document.removechild(li);
+update()
+getElementsByClassName(‘bar’) returns [];
+
+getElementsByClassName(‘bar’) returns [li node, div node]
+
+$(“.classname”)
+document.querySelectorAll(‘.classname’);
+document.getElementsByTagName(‘div’)

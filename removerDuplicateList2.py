@@ -45,3 +45,23 @@
                     prev = prev.next
                     curr = curr.next
         return head
+
+    def deleteDuplicatesFinal(self, head):
+        if head == None or head.next == None: return None
+        G = ListNode(0)
+        G.next = head
+        cur = G
+        fast = head
+        while fast != None:
+            isDup = False
+            while fast.next != None and fast.val == fast.next.val:
+                isDup = True
+                fast = fast.next
+            if isDup:
+                cur.next = fast.next
+                fast = fast.next
+                continue
+            #cur.next = fast
+            cur = fast
+            fast = fast.next
+        return G.next
