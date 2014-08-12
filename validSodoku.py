@@ -2,23 +2,18 @@ class Solution:
     # @param board, a 9x9 2D array
     # @return a boolean
     def isValidSudoku(self, board):
-        check = {}
-        for unitRow in range(3, 10, 3):
-            for unitCol in range(3, 10, 3):
-                temp = []
-                for row in range(unitRow - 3, unitRow):
-                    for col in range(unitCol - 3, unitCol):
-                        currentNum = board[row][col]
-                        if currentNum == '.': continue
-                        if currentNum in temp:
-                            return False
-                        else:
-                            temp.append(currentNum)
-                            if currentNum not in check:
-                                check[currentNum] = [[row], [col]]
-                            else:
-                                if row in check[currentNum][0]: return False
-                                if col in check[currentNum][1]: return False
-                                check[currentNum][0].append(row)
-                                check[currentNum][1].append(col)
+      def isValidSudoku(self, board):
+        for row in range(0, 9):
+            for col in range(0, 9):
+                if board[row][col] != '.':
+                    if not self.isValid(row, col, board): return False
+        return True
+    def isValid(self, row, col, board):
+        for c in range(0, 9):
+            if board[row][c] == board[row][col] and c != col: return False
+        for r in range(0, 9):
+            if board[r][col] == board[row][col] and r != row: return False
+        for r in range(row / 3 * 3, row / 3 * 3 + 3):
+            for c in range(col / 3 * 3, col / 3 * 3 + 3):
+                if board[r][c] == board[row][col] and r != row and c != col: return False
         return True

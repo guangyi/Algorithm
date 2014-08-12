@@ -12,20 +12,7 @@ class TreeNode:
 class Solution:
     # @param root, a tree node
     # @return an integer
-    def sumNumbers(self, root):
-        # method 1
-        pathArr = self.sum(root)
-        
-        # method 2
-        print self.sum3(root, 0)
-        
-        sum = 0
-        for arr in pathArr:
-            length = len(arr)
-            for i in range(0, length):
-                sum = sum + arr[i] * pow(10, length - 1 - i)
-        return sum
-    
+    # sum4 and sum4 all works fine
     def sum3(self, root, resultSoFar):
         if root == None: return 0
         resultSoFar  = resultSoFar * 10 + root.val
@@ -33,20 +20,16 @@ class Solution:
         right = self.sum3(root.right, resultSoFar)
         if left == 0 and right == 0: return resultSoFar
         return left + right
-            
-    def sum(self, root):
-        if root == None: return ''
-        leftResult = self.sum(root.left)
-        if leftResult:
-            for item in leftResult:
-                item.insert(0, root.val)
-        rightResult =  self.sum(root.right)
-        if rightResult:
-            for item in rightResult:
-                item.insert(0, root.val)
-        if (not leftResult) and (not rightResult):
-            return [[root.val]]
-        return (leftResult or [])   + (rightResult or [])
+    
+    def sum4(self, root, currSum):
+        if root == None: return 0
+        if root.left == None and root.right == None: return currSum * 10 + root.val
+        left = self.sum4(root.left, currSum * 10 + root.val) if root.left else 0
+        right = self.sum4(root.right, currSum * 10 + root.val) if root.right else 0
+        return left + right
+    
+    def sumNumbers(self, root):
+        return self.sum4(root, 0)
    
     
         

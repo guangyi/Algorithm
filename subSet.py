@@ -7,29 +7,22 @@ Get all subset of a distinct integer set
 '''
 
 class Solution():
-    def getAllSubset(self, Set):
-        if not Set:
-            return [] 
-        # left rotation means get 2^n
-        # for each set, max number of subset is 2^n --> n is the size of set
-        Max = 1 << len(Set)
+    def subsets(self, S):
         result = []
-        for i in range(0, Max):
-            if i == 0:
-                result.append([])
-            else: result.append(self.intToSubset(i, Set))
+        maxNum = pow(2, len(S))
+        S.sort()
+        for integer in range(0, maxNum):
+            arr = self.sub(S, integer)
+            result.append(arr)
         return result
-    
-    def intToSubset(self, i, Set):
-        k = i
-        index = 0 #
+        
+    def sub(self, S, i):
+        index = len(S) - 1
         result = []
-        while k > 0:
-            if (k & 1) == 1:
-                result.append(Set[index])
-            index += 1
-            k = k >> 1
-        result.sort()# if require sorted
+        while i > 0:
+            if i & 1 == 1: result.insert(0, S[index])
+            i = i >> 1
+            index -= 1
         return result
 
 print Solution().getAllSubset([])
