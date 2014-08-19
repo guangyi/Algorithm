@@ -10,25 +10,24 @@ Given an integer n, generate the nth sequence.
 class Solution:
     # @return a string
     def countAndSay(self, n):
+        result = ['1']
         count = 1
-        prevSequence = '1'
         while count < n:
-            newSequence = prevDigit  = ''
-            oneCounter = 0
-            for digit in prevSequence:
-                if prevDigit == '':
-                    prevDigit = digit
-                    oneCounter += 1
-                elif digit == prevDigit:
-                    oneCounter += 1
-                else: #prevDigit != digit 
-                    newSequence += str(oneCounter) + prevDigit
-                    prevDigit = digit
-                    oneCounter = 1
-            newSequence += str(oneCounter) + prevDigit
+            temp = []
+            counter = 1
+            prev = result[0]
+            for string in result[1:]:
+                if string == prev: counter += 1
+                else:
+                    temp.append(str(counter))
+                    temp.append(prev)
+                    prev = string
+                    counter = 1
+            temp.append(str(counter))
+            temp.append(prev)
+            result = temp
             count += 1
-            prevSequence = newSequence
-        return prevSequence
+        return ''.join(result)
 print Solution().countAndSay(2)
 print Solution().countAndSay(3)
 print Solution().countAndSay(4)

@@ -61,7 +61,6 @@
                 cur.next = fast.next
                 fast = fast.next
                 continue
-            #cur.next = fast
             cur = fast
             fast = fast.next
         return G.next

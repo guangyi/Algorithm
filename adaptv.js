@@ -17,7 +17,7 @@ for file in files:
     for line in fileContent:
         index = re.match(reExpress, line)
         if index >-1:
-       	 file.write(line[: index] + ‘<phone>’ + line[index + 1: index + 14] + line[index + 14: ])
+       	 file.write(line[: index] + ‘<phone>’ + line[index + 1: index + 14] + line[index + 14: ] + ‘</phone>)
 close file
 
 print binary search tree order in lexographical order
@@ -47,33 +47,36 @@ some_exp_fn(); // this takes a long time
 
 ratelimit_exp_fn() // this is called any number of times, but internally calls some_exp_fn at most once every 60s.
 
-function ratelimit_exp_fn() {
-            var prevTime;
+function ratelimit_exp_fn(callback) {
+    var prevTime;
 	var time2 = getTime();
 	if (time2 - prevTime > 60) {
 		result = some_exp_fn();
 		prevTime = time2;
 	return result
  }
+
  ratelimit_exp_fn(fn3, fn4)
  ratelimit_exp_fn(fn3)
  ratelimit_exp_fn
 
 ratelimit(fn) {
-	}
+
+}
 
 ratelimited_exp_fn1 = ratelimit(exp_fn);
 
 ratelimited_exp_fn2 = ratelimit(exp_fn2);
 
+
 function ratelimit(fn) {
-var prevTime = 0;
+    var prevTime = 0;
 	return function() {
-            var time2 = getTime();
-	if (time2 - prevTime > 60) {
-		result = fn();
-		prevTime = time2;
-	return result
+        var time2 = getTime();
+    	if (time2 - prevTime > 60) {
+    		result = fn();
+    		prevTime = time2;
+    	return result
  	}
 
 }

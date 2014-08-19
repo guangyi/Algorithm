@@ -17,15 +17,15 @@ function getElementsByClassName(classname) {
 	for (node in arr) {
 		names = node.className();
 		var n = names.split(' ');
-		flag = false;
 		for (index in n) {
 			if (n[index] == 'foo') {
-				flag = True;
-				return
+				result.push(node);
+				break; // TODO: check whther it returns all loops
 			}
 		}
-		if (flag) result.push(node);
-  return check(result)；
+	}
+		
+  return result;
 }
 
 Document.removechild(li);

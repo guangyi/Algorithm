@@ -66,6 +66,24 @@ class Solution:
         if rightmostOfRight:  return rightmostOfRight
         elif rightmostOfLeft: return rightmostOfLeft
         else: return root
+
+    # I think 4 is better
+    def flatten4(self, root):
+        if root == None: return
+        leftMost = self.flatten(root.left)
+        rightMost = self.flatten(root.right)
+        if not leftMost and not rightMost: return root
+        elif not leftMost: return rightMost
+        elif not rightMost: 
+            root.right = root.left
+            root.left = None
+            return leftMost
+        else:
+            temp = root.right
+            root.right = root.left
+            root.left = None
+            leftMost.right = temp
+            return rightMost
 root = TreeNode(0)
 node1 = TreeNode(1)
 node2 = TreeNode(2)
