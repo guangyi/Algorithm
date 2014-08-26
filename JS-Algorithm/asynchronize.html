@@ -14,12 +14,11 @@
 				}
 				funcList.forEach(function(func) {
 					func(callBack);
-				})
+				});
 			}
 
 			(function() {
 				function test1(callBack) {
-					console.log(this);
 					setTimeout(callBack, 1000, test1.name);
 				}
 				function test2(callBack) {
@@ -28,7 +27,8 @@
 				function test3(callBack) {
 					setTimeout(callBack, 1500, test3.name);
 				}
-				var funcList = [test1 , test2, test3];
+				
+				var funcList = [test1, test2, test3];
 				callBackIfDone(funcList, function() {
 					console.log('done');
 				})

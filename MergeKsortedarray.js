@@ -69,6 +69,11 @@ function mergeSortHelper(arrayList, start, end) {
    return result;
  }
 
+
+
+
+
+
 function assert(isTrue) {
   if (isTrue) console.log('assert pass!!');
   else console.log('Oh..No...sth is wrong');
@@ -82,6 +87,7 @@ function test1() {
   ];
   var result = merge(arrayList);
   assert(result.toString() == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].toString());
+  
   var result2 = mergeSort(arrayList);
   assert(result2.toString() == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].toString());
 }
